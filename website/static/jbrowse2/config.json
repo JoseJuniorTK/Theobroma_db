@@ -1,0 +1,122 @@
+{
+  "configuration": {
+    "rpc": {
+      "defaultDriver": "WebWorkerRpcDriver",
+      "drivers": {
+        "MainThreadRpcDriver": {},
+        "WebWorkerRpcDriver": {}
+      }
+    },
+    "logoPath": {
+      "locationType": "UriLocation",
+      "uri": ""
+    }
+  },
+  "plugins": [],
+  "assemblies": [
+    {
+      "name": "test",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "test-1638115940875",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "locationType": "BlobLocation",
+            "name": "GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.fa",
+            "blobId": "b1638115901873"
+          },
+          "faiLocation": {
+            "locationType": "BlobLocation",
+            "name": "GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.fa.fai",
+            "blobId": "b1638115938776"
+          }
+        },
+        "displays": [
+          {
+            "type": "LinearReferenceSequenceDisplay",
+            "displayId": "test-1638115940875-LinearReferenceSequenceDisplay"
+          }
+        ]
+      },
+      "displayName": "test"
+    }
+  ],
+  "tracks": [],
+  "internetAccounts": [],
+  "aggregateTextSearchAdapters": [],
+  "connections": [],
+  "defaultSession": {
+    "id": "zZlGZDFcB",
+    "name": "New Session 28/11/2021 12:04:29",
+    "margin": 0,
+    "drawerWidth": 384,
+    "views": [
+      {
+        "id": "IIYWFhLCE",
+        "type": "LinearGenomeView",
+        "offsetPx": 724868344,
+        "bpPerPx": 0.020000000000000004,
+        "displayedRegions": [
+          {
+            "refName": "NC_030850.1",
+            "start": 0,
+            "end": 37323695,
+            "reversed": false,
+            "assemblyName": "test"
+          }
+        ],
+        "tracks": [
+          {
+            "id": "ZlZ71XvGz",
+            "type": "ReferenceSequenceTrack",
+            "configuration": "test-1638115940875",
+            "displays": [
+              {
+                "id": "eA3x2sHOTY",
+                "type": "LinearReferenceSequenceDisplay",
+                "height": 180,
+                "configuration": "test-1638115940875-LinearReferenceSequenceDisplay",
+                "showForward": true,
+                "showReverse": true,
+                "showTranslation": true
+              }
+            ]
+          }
+        ],
+        "hideHeader": false,
+        "hideHeaderOverview": false,
+        "trackSelectorType": "hierarchical",
+        "trackLabels": "overlapping",
+        "showCenterLine": false,
+        "showCytobandsSetting": true
+      }
+    ],
+    "widgets": {
+      "hierarchicalTrackSelector": {
+        "id": "hierarchicalTrackSelector",
+        "type": "HierarchicalTrackSelectorWidget",
+        "collapsed": {
+          "test-1638115940875": true
+        },
+        "filterText": "",
+        "view": "IIYWFhLCE"
+      },
+      "addTrackWidget": {
+        "id": "addTrackWidget",
+        "type": "AddTrackWidget",
+        "view": "IIYWFhLCE"
+      }
+    },
+    "activeWidgets": {
+      "hierarchicalTrackSelector": "hierarchicalTrackSelector"
+    },
+    "connectionInstances": [],
+    "sessionTracks": [],
+    "sessionConnections": [],
+    "sessionAssemblies": [],
+    "sessionPlugins": [],
+    "minimized": false,
+    "drawerPosition": "right"
+  }
+}

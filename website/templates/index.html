@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/cocoa.png') }}"/>
+    <title>Theobroma DB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script
+      src="//unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="//unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="//unpkg.com/@jbrowse/react-linear-genome-view/dist/react-linear-genome-view.umd.development.js"
+      crossorigin
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <section class="container is-max-desktop" >
+            <div class="navbar is-max-desktop" style="padding-top: 7px;padding-left: 8px; background-color: #7abee2
+            ;" >
+                <h1 class="title" style="font-size: 35px;">
+                    Theobroma DB
+                </h1>
+            </div>
+        </div>
+        <nav class="navbar" style="padding:0px 30px 0px 12px; background-color: #5cadcb;">
+            <div class="navbar-brand">
+                <a class="navbar-burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <div class="navbar-menu" id="nav-links" style="font-size: 15px;">
+                <div class="navbar-start">
+                    <a class="navbar-item {{ home_bar_classes }}" data-target="home-page">
+                        HOME
+                    </a>
+                    <a class="navbar-item {{ blast_bar_classes }}" data-target="blast-page">
+                        BLAST
+                    </a>
+                    <a class="navbar-item {{ sequence_bar_classes }}" data-target="sequence-server">
+                        SEQUENCE SERVER
+                    </a>
+                    <a class="navbar-item" data-target="browse-page">
+                        BROWSE
+                    </a>
+                    <a class="navbar-item" data-target="phylotree-page">
+                        PHYLOGENETIC TREE
+                    </a>
+                    <a class="navbar-item" data-target="download-page">
+                        DOWNLOAD
+                    </a>
+                    <a class="navbar-item" data-target="contact-page">
+                        CONTACT US
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <section class="container is-max-desktop" >
+
+    
+    </section>
+    <section class="section">
+        <div class="container is-max-desktop" id="tab-content">
+            <div class="{{ home_classes }}" id="home-page">
+                <div class="columns">
+                    <div class="column is-narrow">
+                        <div class="box" style="width: 200px;">
+                            <figure class="image is-3by5">
+                                <img src="../static/assets/cacau1.png">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box" >
+                            <p class="title is-5">Species Description</p>
+                            <p class="subtitle">The cupuaçu tree, cupuaçueiro or cupu, is native to the Amazon Basin and is found most often in the north and northeast regions, in the states of Amapá, Pará, and Amazonas. Its tree can reach an average height of 10 to 25 meters and in cultivated areas the height varies from 6 to 10 meters.;
+                            <p class="subtitle">Scientific name: Theobroma grandiflorum; </br>
+			    Native names: <i>"Cupuaçu" (Pará)</i>, <i>"pupu or pupuaçu" (Maranhão)</i>, <i>"cocoa-cupuaçu" (Bahia)</i> or <i>"cupu" (Pará and Acre)</i>; </br>
+                            Flowers: Simple and remain on their branches; </br>
+                            Fruits: Spherical or ovoid-shaped, up to 25 cm long; </br>
+                            Flowering: January to May;</br>
+			    Fructification: The fruit has a hard and smooth peel, and a dark brown color; </br>
+                            Uses: Ice creams, juices, vitamins, sweets, etc.
+                            </p>
+                            <form action="https://www.nature.com/articles/ng.736">
+                                <button class="button is-primary" style="background-color: #5cadcb;" type="submit" >Learn More... </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="{{ blast_classes }}" id="blast-page">
+                <h1 class="title">Blast</h1>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="select">
+                        <select name="modoBlast" id="mBlast">
+                            <option value="1">BlastP</option>
+                            <option value="2">BlastX</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select name="escolhaGenoma" id="genoma">
+			                <option value="0">NC_030850.1.fasta</option>
+                            <option value="1">CM001879.1.fasta</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                    <textarea class="textarea" placeholder="Sequência em formato FASTA" id="nucleotideo" name="nucleotideo" rows="9"></textarea>
+                    <br>
+                    <h3>Ou enviar arquivo</h3>
+                    <br>
+                    <div class="file has-name is-fullwidth">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="file">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    Escolha um Arquivo
+                                </span>
+                            </span>
+                            <spam class="file-name">
+                                Nenhum Arquivo Selecionado
+                            </spam>
+                        </label>
+                        <input class="button is-primary" type="submit">
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="is-hidden" id="sequence-server">
+                <iframe src="http://localhost:4567/" frameborder="0" width="100%" height="760px"></iframe>
+            </div>
+            <div class="is-hidden" id="browse-page">
+                <div id="jbrowse_linear_genome_view"></div>
+      <script type="module">
+      const { createViewState, JBrowseLinearGenomeView } = JBrowseReactLinearGenomeView
+      const { createElement } = React
+      const { render } = ReactDOM
+      const assembly = {
+        name: 'GCF_000208745.1_Criollo_cocoa_genome_V2_genomic',
+      sequence: {
+        type: 'ReferenceSequenceTrack',
+        trackId: 'GCF_000208745.1_Criollo_cocoa_genome_V2_genomic-ReferenceSequenceTrack',
+        adapter: {
+          type: 'IndexedFastaAdapter',
+          fastaLocation: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.fa') }}",
+            
+            locationType: 'UriLocation',
+          },
+          faiLocation: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.fa.fai')}}",
+            locationType: 'UriLocation',
+          },
+        },
+      },
+      name: 'GCA_000403535.1_Theobroma_cacao_20110822_genomic',
+      sequence: {
+        type: 'ReferenceSequenceTrack',
+        trackId: 'GCA_000403535.1_Theobroma_cacao_20110822_genomic-ReferenceSequenceTrack',
+        adapter: {
+          type: 'IndexedFastaAdapter',
+          fastaLocation: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCA_000403535.1_Theobroma_cacao_20110822_genomic.fa')}}",
+
+            locationType: 'UriLocation',
+          },
+          faiLocation: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCA_000403535.1_Theobroma_cacao_20110822_genomic.fa.fai')}}",
+
+            locationType: 'UriLocation',
+          },
+        },
+      },
+      }
+
+const tracks = [
+  {
+    type: 'FeatureTrack',
+      trackId: 'GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.gff',
+      name: 'GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.gff',
+      assemblyNames: [
+        'GCF_000208745.1_Criollo_cocoa_genome_V2_genomic'
+      ],
+      adapter: {
+        type: 'Gff3TabixAdapter',
+        gffGzLocation: {
+          uri: "{{ url_for('static', filename='jbrowser2genomes/GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.gff.gz')}}",
+
+          locationType: 'UriLocation',
+        },
+        index: {
+          location: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCF_000208745.1_Criollo_cocoa_genome_V2_genomic.gff.gz.tbi')}}",
+
+            locationType: 'UriLocation',
+          },
+          indexType: 'TBI'
+        },
+      },
+      type: 'FeatureTrack',
+      trackId: 'GCA_000403535.1_Theobroma_cacao_20110822_genomic.gff',
+      name: 'GCA_000403535.1_Theobroma_cacao_20110822_genomic.gff',
+      assemblyNames: [
+        'GCA_000403535.1_Theobroma_cacao_20110822_genomic'
+      ],
+      adapter: {
+        type: 'Gff3TabixAdapter',
+        gffGzLocation: {
+          uri: "{{ url_for('static', filename='jbrowser2genomes/GCA_000403535.1_Theobroma_cacao_20110822_genomic.gff.gz')}}",
+
+          locationType: 'UriLocation',
+        },
+        index: {
+          location: {
+            uri: "{{ url_for('static', filename='jbrowser2genomes/GCA_000403535.1_Theobroma_cacao_20110822_genomic.gff.gz.tbi')}}",
+            locationType: 'UriLocation',
+          },
+          indexType: 'TBI'
+        },
+      },
+    }
+]
+      const state = new createViewState({
+        assembly,
+        tracks,
+        location: '1:100,987,269..100,987,368',
+      })
+      render(
+        createElement(JBrowseLinearGenomeView, { viewState: state }),
+        document.getElementById('jbrowse_linear_genome_view'),
+      )
+      pageScroll()
+     </script>
+         <script>
+ function pageScroll() {
+    window.scrollTo(0, 1);
+    scrolldelay = setTimeout(pageScroll,1);
+}
+                </script>
+         </div>
+            <div class="is-hidden" id="phylotree-page">
+                <h1 class="title">Phyogenetic tree</h1>
+                <div class="field is-horizontal">
+                    <form method="POST" enctype="multipart/form-data">
+                        <label class="checkbox">
+                            <input class="checkbox" type="checkbox" name="genoma1" value="treeCM001879.1">
+                            CM001879.1.fasta
+                        </label>
+                        <br>
+                        <label class="checkbox">
+                            <input class="checkbox" type="checkbox" name="genoma2" value="treeNC_030850.1">
+                            NC_030850.1.fasta
+                        </label>
+                        <br>
+                        <br>
+                        <textarea class="textarea" placeholder="Sequência em formato FASTA" name="tree-nucleotideo" rows="9"></textarea>
+                        <br>
+                        <br>
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="tree-file">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Escolha um Arquivo
+                                    </span>
+                                </span>
+                                <spam class="file-name">
+                                    Nenhum Arquivo Selecionado
+                                </spam>
+                            </label>
+                            <input class="button is-primary" type="submit" value="Gerar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="is-hidden" id="download-page">
+                <h1 class="title">Download</h1>
+				<p class="subtitle"> &nbsp </p>
+			    <p class="subtitle">Genoma 1: <a href="https://www.ncbi.nlm.nih.gov/nuccore/342240206?report=fasta"> NC_030850.1 a NC_030859.1 </a> </p>
+			    <p class="subtitle">Genoma 2: <a href="https://www.ncbi.nlm.nih.gov/nuccore/508078138?report=fasta"> CM001879.1 a CM001888.1  </a> </p>
+            </div>
+	    <div class="is-hidden" id="contact-page">
+                <h1 class="title">Contact us</h1>
+                                <p class="subtitle"> &nbsp </p>
+                            <p class="subtitle">Pedro Augusto: email: pedfar321@gmail.com </p>
+                            <p class="subtitle">Amanda Sammer: email: amandasammerbrandao@gmail.com </p>
+			    <p class="subtitle">Calel Freitas: email: calelfreitas@gmail.com </p>
+			    <p class="subtitle">José Maria: email: josemjuniortk@gmail.com</p>
+            </div>
+
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+
+
+</body>
+</html>
